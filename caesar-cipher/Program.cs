@@ -29,11 +29,11 @@ namespace caesar_cipher
 
             foreach (var i in cipher_text)
             {
-                int encrypted;
-                encrypted = (int)i - key;
+                int decrypted;
+                decrypted = (int)i - key;
 
-                char encrypted_letters = (Convert.ToChar(encrypted));
-                string decrypted_text = Convert.ToString(encrypted_letters);
+                char decrypted_letters = (Convert.ToChar(decrypted));
+                string decrypted_text = Convert.ToString(decrypted_letters);
 
                 Console.Write(decrypted_text);
             }
