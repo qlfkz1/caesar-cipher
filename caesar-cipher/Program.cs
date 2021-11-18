@@ -6,17 +6,20 @@ namespace caesar_cipher
     class Program
     {
 
-        static string Encrypt(string message, int key)
+        static void Encrypt(string message, int key)
         {
             foreach (var i in message)
             {
-                int index = char.ToUpper(i) - 64;
-                Console.Write(index);
+                int encrypted;
+                encrypted = (int)i + key;
+
+                char encrypted_letters = (Convert.ToChar(encrypted));
+                string cipher_text = Convert.ToString(encrypted_letters);
+
+                Console.WriteLine();
+                Console.Write(cipher_text);
             }
 
-            
-            string cipher_text = "";
-            
         }
 
         static string Decrypt(string cipher_text, int key)
@@ -52,20 +55,6 @@ namespace caesar_cipher
             {
                 Console.Write("Invalid option.\n[1] Encrypt\n[2] Decrypt\n\n");
                 chosen = Convert.ToInt32(Console.ReadLine());
-            }
-            
-            if (chosen == 1 )
-            {
-                string key;
-                
-                Console.Write("Enter a key:\n");
-                key = Console.ReadLine();
-
-                while (!Regex.IsMatch(key, @"^\d+$"))
-                {
-                    Console.Write("Invalid number. Please re-enter:");
-                    key = Console.ReadLine();
-                }
             }
 
             switch (chosen)
@@ -105,6 +94,7 @@ namespace caesar_cipher
         static void Main(string[] args)
         {
             MainMenu();
+
         }
     }
 }
