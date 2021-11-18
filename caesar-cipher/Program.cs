@@ -8,6 +8,8 @@ namespace caesar_cipher
 
         static void Encrypt(string message, int key)
         {
+            Console.WriteLine();
+
             foreach (var i in message)
             {
                 int encrypted;
@@ -16,18 +18,25 @@ namespace caesar_cipher
                 char encrypted_letters = (Convert.ToChar(encrypted));
                 string cipher_text = Convert.ToString(encrypted_letters);
 
-                Console.WriteLine();
                 Console.Write(cipher_text);
             }
 
         }
 
-        static string Decrypt(string cipher_text, int key)
+        static void Decrypt(string cipher_text, int key)
         {
+            Console.WriteLine();
 
-            string plain_text = "";
+            foreach (var i in cipher_text)
+            {
+                int encrypted;
+                encrypted = (int)i - key;
 
-            return plain_text;
+                char encrypted_letters = (Convert.ToChar(encrypted));
+                string decrypted_text = Convert.ToString(encrypted_letters);
+
+                Console.Write(decrypted_text);
+            }
         }
 
         static string BruteForce(string cipher_text)
@@ -60,8 +69,15 @@ namespace caesar_cipher
             switch (chosen)
             {
                 case 1:
-                    string num;
+                    Console.WriteLine();
 
+                    string phrase;
+                    Console.Write("Enter a phrase you would like to encrypt:\n");
+                    phrase = Console.ReadLine();
+
+                    Console.WriteLine();
+
+                    string num;
                     Console.Write("Enter a key:\n");
                     num = Console.ReadLine();
 
@@ -73,14 +89,31 @@ namespace caesar_cipher
 
                     int key = int.Parse(num);
 
+                    Encrypt(phrase, key);
+                    break;
+
+                case 2:
                     Console.WriteLine();
 
-                    string phrase;
+                    string encrypted;
+                    Console.Write("Enter a phrase you would like to decrypt:\n");
+                    encrypted = Console.ReadLine();
 
-                    Console.Write("Enter a phrase you would like to encrypt:\n");
-                    phrase = Console.ReadLine();
+                    Console.WriteLine();
 
-                    Encrypt(phrase, key);
+                    string num2;
+                    Console.Write("Enter a key:\n");
+                    num2 = Console.ReadLine();
+
+                    while (!Regex.IsMatch(num2, @"^\d+$"))
+                    {
+                        Console.Write("Invalid number. Please re-enter:");
+                        num2 = Console.ReadLine();
+                    }
+
+                    int key2 = int.Parse(num2);
+
+                    Decrypt(encrypted, key2);
                     break;
 
                 default:
