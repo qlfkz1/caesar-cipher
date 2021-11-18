@@ -15,7 +15,13 @@ namespace caesar_cipher
                 int encrypted;
                 encrypted = (int)i + key;
 
+                if (encrypted > 127)
+                {
+                    encrypted = (encrypted - 94);
+                }
+
                 char encrypted_letters = (Convert.ToChar(encrypted));
+
                 string cipher_text = Convert.ToString(encrypted_letters);
 
                 Console.Write(cipher_text);
@@ -31,6 +37,11 @@ namespace caesar_cipher
             {
                 int decrypted;
                 decrypted = (int)i - key;
+
+                if (decrypted > 127)
+                {
+                    decrypted = (decrypted + 94);
+                }
 
                 char decrypted_letters = (Convert.ToChar(decrypted));
                 string decrypted_text = Convert.ToString(decrypted_letters);
@@ -115,6 +126,12 @@ namespace caesar_cipher
 
                     Decrypt(encrypted, key2);
                     break;
+
+                case 3:
+
+
+                    break;
+
 
                 default:
                     break;
