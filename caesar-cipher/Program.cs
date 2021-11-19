@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Text.RegularExpressions;
 
 namespace caesar_cipher
@@ -24,8 +25,11 @@ namespace caesar_cipher
 
                 string cipher_text = Convert.ToString(encrypted_letters);
 
-                Console.Write(cipher_text);
+                Console.Write("Encrypted output:\n", cipher_text);
             }
+
+            Thread.Sleep(5000);
+            MainMenu();
 
         }
 
@@ -38,7 +42,7 @@ namespace caesar_cipher
                 int decrypted;
                 decrypted = (int)i - key;
 
-                if (decrypted > 127)
+                if (decrypted < 32)
                 {
                     decrypted = (decrypted + 94);
                 }
@@ -46,8 +50,11 @@ namespace caesar_cipher
                 char decrypted_letters = (Convert.ToChar(decrypted));
                 string decrypted_text = Convert.ToString(decrypted_letters);
 
-                Console.Write(decrypted_text);
+                Console.Write("Decrypted output:\n", decrypted_text);
             }
+
+            Thread.Sleep(5000);
+            MainMenu();
         }
 
         static string BruteForce(string cipher_text)
@@ -60,6 +67,7 @@ namespace caesar_cipher
 
         static void MainMenu()
         {
+            Console.Clear();
             int chosen;
 
 
@@ -83,18 +91,18 @@ namespace caesar_cipher
                     Console.WriteLine();
 
                     string phrase;
-                    Console.Write("Enter a phrase you would like to encrypt:\n");
+                    Console.Write("Enter a phrase you would like to encrypt:\n\n");
                     phrase = Console.ReadLine();
 
                     Console.WriteLine();
 
                     string num;
-                    Console.Write("Enter a key:\n");
+                    Console.Write("Enter a key:\n\n");
                     num = Console.ReadLine();
 
                     while (!Regex.IsMatch(num, @"^\d+$"))
                     {
-                        Console.Write("Invalid number. Please re-enter:");
+                        Console.Write("Invalid number. Please re-enter:\n\n");
                         num = Console.ReadLine();
                     }
 
@@ -107,7 +115,7 @@ namespace caesar_cipher
                     Console.WriteLine();
 
                     string encrypted;
-                    Console.Write("Enter a phrase you would like to decrypt:\n");
+                    Console.Write("Enter a phrase you would like to decrypt:\n\n");
                     encrypted = Console.ReadLine();
 
                     Console.WriteLine();
@@ -118,7 +126,7 @@ namespace caesar_cipher
 
                     while (!Regex.IsMatch(num2, @"^\d+$"))
                     {
-                        Console.Write("Invalid number. Please re-enter:");
+                        Console.Write("Invalid number. Please re-enter:\n\n");
                         num2 = Console.ReadLine();
                     }
 
