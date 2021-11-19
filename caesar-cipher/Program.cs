@@ -6,7 +6,6 @@ namespace caesar_cipher
 {
     class Program
     {
-
         static void Encrypt(string message, int key)
         {
             Console.WriteLine();
@@ -22,7 +21,6 @@ namespace caesar_cipher
                 }
 
                 char encrypted_letters = (Convert.ToChar(encrypted));
-
                 string cipher_text = Convert.ToString(encrypted_letters);
 
                 Console.Write("Encrypted output:\n", cipher_text);
@@ -30,7 +28,6 @@ namespace caesar_cipher
 
             Thread.Sleep(5000);
             MainMenu();
-
         }
 
         static void Decrypt(string cipher_text, int key)
@@ -70,14 +67,11 @@ namespace caesar_cipher
             Console.Clear();
             int chosen;
 
-
             Console.WriteLine("Caesar Cipher");
             Console.WriteLine();
 
             Console.Write("Would you like to:\n[1] Encrypt\n[2] Decrypt\n\n");
             chosen = Convert.ToInt32(Console.ReadLine());
-
-
 
             while (chosen < 1 || chosen > 2)
             {
@@ -110,7 +104,6 @@ namespace caesar_cipher
 
                     Encrypt(phrase, key);
                     break;
-
                 case 2:
                     Console.WriteLine();
 
@@ -134,12 +127,8 @@ namespace caesar_cipher
 
                     Decrypt(encrypted, key2);
                     break;
-
                 case 3:
-
-
                     break;
-
 
                 default:
                     break;
@@ -152,7 +141,6 @@ namespace caesar_cipher
         static void Main(string[] args)
         {
             MainMenu();
-
         }
     }
 }
