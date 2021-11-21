@@ -30,6 +30,8 @@ namespace caesar_cipher
             MainMenu();
         }
 
+
+
         static void Decrypt(string cipher_text, int key)
         {
             Console.WriteLine();
@@ -53,6 +55,9 @@ namespace caesar_cipher
             Thread.Sleep(5000);
             MainMenu();
         }
+
+
+
 
         static string BruteForce(string cipher_text)
         {
@@ -128,9 +133,21 @@ namespace caesar_cipher
                     Decrypt(encrypted, key2);
                     break;
                 case 3:
+                    Console.WriteLine();
+
+                    string brutephrase;
+                    Console.Write("Enter a phrase you would like to decrypt:\n\n");
+                    brutephrase = Console.ReadLine();
+
+                    Console.WriteLine();
+
+                    BruteForce(brutephrase);
                     break;
 
                 default:
+                    Console.Write("\n Not an option. Error");
+                    Thread.Sleep(4000);
+                    MainMenu();
                     break;
             }
 
