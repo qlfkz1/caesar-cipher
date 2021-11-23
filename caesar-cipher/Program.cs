@@ -9,6 +9,7 @@ namespace caesar_cipher
         static void Encrypt(string message, int key)
         {
             Console.WriteLine();
+            Console.Write("Encrypted output: ");
 
             foreach (var i in message)
             {
@@ -23,18 +24,17 @@ namespace caesar_cipher
                 char encrypted_letters = (Convert.ToChar(encrypted));
                 string cipher_text = Convert.ToString(encrypted_letters);
 
-                Console.Write("Encrypted output:\n", cipher_text);
+                Console.Write(cipher_text);
             }
 
             Thread.Sleep(5000);
             MainMenu();
         }
 
-
-
         static void Decrypt(string cipher_text, int key)
         {
             Console.WriteLine();
+            Console.Write("Decrypted output: ");
 
             foreach (var i in cipher_text)
             {
@@ -49,22 +49,41 @@ namespace caesar_cipher
                 char decrypted_letters = (Convert.ToChar(decrypted));
                 string decrypted_text = Convert.ToString(decrypted_letters);
 
-                Console.Write("Decrypted output:\n", decrypted_text);
+                Console.Write(decrypted_text);
             }
 
             Thread.Sleep(5000);
             MainMenu();
         }
 
-
-
-
-        static string BruteForce(string cipher_text)
+        static void BruteForce(string cipher_text)
         {
+            Console.WriteLine();
 
-            string plain_text = "";
+           for (int v = 1; v < 26; v++)
+            {
+                foreach (var i in cipher_text)
+                {
+                    int key;
+                    key = (int)i - v;
 
-            return plain_text;
+                    if (key < 32)
+                    {
+                        key = (key + 94);
+                    } else if (key > 127) {
+                        key = (key - 94);
+                    }
+
+                    char bruteforced_letters = (Convert.ToChar(key));
+                    string bruteforced_text = Convert.ToString(bruteforced_letters);
+
+                    Console.Write(bruteforced_text);
+                }
+                Console.WriteLine();
+            }
+
+            Thread.Sleep(5000);
+            MainMenu();
         }
 
         static void MainMenu()
@@ -75,12 +94,12 @@ namespace caesar_cipher
             Console.WriteLine("Caesar Cipher");
             Console.WriteLine();
 
-            Console.Write("Would you like to:\n[1] Encrypt\n[2] Decrypt\n\n");
+            Console.Write("Would you like to:\n[1] Encrypt\n[2] Decrypt\n[3] Bruteforce\n\n");
             chosen = Convert.ToInt32(Console.ReadLine());
 
-            while (chosen < 1 || chosen > 2)
+            while (chosen < 1 || chosen > 3)
             {
-                Console.Write("Invalid option.\n[1] Encrypt\n[2] Decrypt\n\n");
+                Console.Write("Invalid option.\n[1] Encrypt\n[2] Decrypt\n[3] Bruteforce\n\n");
                 chosen = Convert.ToInt32(Console.ReadLine());
             }
 
